@@ -5,4 +5,4 @@ CFLAGS = -O2
 	$(CC) $< $(CFLAGS) -o $@_elf
 
 purge:
-	rm -f *_elf *.in
+	rm -f *_elf *.in *.out
