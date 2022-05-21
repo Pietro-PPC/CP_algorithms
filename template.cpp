@@ -3,6 +3,7 @@ using namespace std;
 
 typedef long long ll;
 typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
 
 #define LL_MAX 0x7fffffffffffffff
 
