@@ -75,14 +75,8 @@ int main(){
 
         for (int i = 0; i < 2*n-1; ++i){
             for (int j = 0; j < n; ++j){
-                if(barrier[i][j] == 'V'){
-                    for (int k = 0; k < 4; ++k)
-                        G[i+diri[k]][2*j+dirj[k]+i%2][dirk1[k]] = false;
-                }
-                else {
-                    for (int k = 0; k < 4; ++k)
-                        G[i+diri[k]][2*j+dirj[k]+i%2][dirk2[k]] = false;
-                }
+                for (int k = 0; k < 4; ++k)
+                    G[i+diri[k]][2*j+dirj[k]+i%2][barrier[i][j] == 'V' ? dirk1[k] : dirk2[k]] = false;
             }
         }
 
