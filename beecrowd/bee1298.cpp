@@ -45,6 +45,11 @@ void dfs(int i, int j){
 }
 
 
+int diri[] = {0, 0, 1, 1};
+int dirj[] = {0, 1, 0, 1};
+int dirk1[] = {RIGHT, LEFT, RIGHT, LEFT};
+int dirk2[] = {DOWN, DOWN, UP, UP};
+
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
@@ -68,36 +73,15 @@ int main(){
             G[i][2*n][RIGHT] = false;
         }
 
-        for (int i = 0; i < 2*n-1; i+=2){
+        for (int i = 0; i < 2*n-1; ++i){
             for (int j = 0; j < n; ++j){
                 if(barrier[i][j] == 'V'){
-                    G[i][2*j][RIGHT] = false;
-                    G[i][2*j+1][LEFT] = false;
-                    G[i+1][2*j][RIGHT] = false;
-                    G[i+1][2*j+1][LEFT] = false;
+                    for (int k = 0; k < 4; ++k)
+                        G[i+diri[k]][2*j+dirj[k]+i%2][dirk1[k]] = false;
                 }
                 else {
-                    G[i][2*j][DOWN] = false;
-                    G[i][2*j+1][DOWN] = false;
-                    G[i+1][2*j][UP] = false;
-                    G[i+1][2*j+1][UP] = false;
-                }
-            }
-        }
-
-        for (int i = 1; i < 2*n-1; i+=2){
-            for (int j = 0; j < n; ++j){
-                if(barrier[i][j] == 'V'){
-                    G[i][2*j+1][RIGHT] = false;
-                    G[i][2*j+2][LEFT] = false;
-                    G[i+1][2*j+1][RIGHT] = false;
-                    G[i+1][2*j+2][LEFT] = false;
-                }
-                else {
-                    G[i][2*j+1][DOWN] = false;
-                    G[i][2*j+2][DOWN] = false;
-                    G[i+1][2*j+1][UP] = false;
-                    G[i+1][2*j+2][UP] = false;
+                    for (int k = 0; k < 4; ++k)
+                        G[i+diri[k]][2*j+dirj[k]+i%2][dirk2[k]] = false;
                 }
             }
         }
