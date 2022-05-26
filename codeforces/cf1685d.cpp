@@ -45,13 +45,19 @@ int main(){
                 alter = 1;
             }
         }
-        if (alter & 1)
-            odd.push_back(alter);
-        else if (s[s.length()-1] == 'A')
-            b_even.push_back(alter);
-        else
-            a_even.push_back(alter);
+        if (alter > 1){
+            if (alter & 1)
+                odd.push_back(alter);
+            else if (s[s.length()-1] == 'A')
+                b_even.push_back(alter);
+            else
+                a_even.push_back(alter);
+        }
         
+        sort(odd.begin(), odd.end());
+        sort(a_even.begin(), a_even.end());
+        sort(b_even.begin(), b_even.end());
+
         bool ans = true;
 
         if (a > a_tot - ab - ba)
@@ -59,27 +65,25 @@ int main(){
         else if (b > b_tot - ab - ba)
             ans = false;
         else {
-            for (auto len : a_even){
-                while(ab > 0 && len){
+            for (auto &len : a_even){
+                while(ab > 0 && len > 1){
                     len -= 2;
                     ab--;
                 }
             }
-            for (auto len : b_even){
-                while(ba > 0 && len){
+            for (auto &len : b_even){
+                while(ba > 0 && len > 1){
                     len -= 2;
                     ba--;
                 }
             }
-
-            for (auto len : odd){
+            for (auto &len : odd){
                 while (ab > 0 && len > 1){
                     len-=2;
                     ab--;
                 }
             }
-
-            for (auto len : odd){
+            for (auto &len : odd){
                 while (ba > 0 && len > 1){
                     len-=2;
                     ba--;
@@ -87,17 +91,21 @@ int main(){
             }
 
             for (auto &len : b_even){
-                len = max(len-2, 0);
-                while(ab > 0 && len){
+                if (len-2 > 1){
                     len -= 2;
-                    ab--;
+                    while(ab > 0 && len > 1){
+                        len -= 2;
+                        ab--;
+                    }
                 }
             }
             for (auto &len : a_even){
-                len = max(len-2, 0);
-                while(ba > 0 && len){
+                if (len-2 > 1){
                     len -= 2;
-                    ba--;
+                    while(ba > 0 && len > 1){
+                        len -= 2;
+                        ba--;
+                    }
                 }
             }
             if (ab || ba) ans = false;
@@ -106,15 +114,6 @@ int main(){
             cout << "YES" << endl;
         else
             cout << "NO" << endl;
-        for (int i = 0; i < odd.size(); ++i)
-            cout << odd[i] << " ";
-        cout << endl;
-        for (int i = 0; i < a_even.size(); ++i)
-            cout << a_even[i] << " ";
-        cout << endl;
-        for (int i = 0; i < b_even.size(); ++i)
-            cout << b_even[i] << " ";
-        cout << endl;
     }
 
     return 0;
