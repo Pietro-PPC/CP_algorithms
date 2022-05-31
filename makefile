@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -O2
+CFLAGS = -O2 -Wall
 
 %: %.cpp
 	$(CC) $< $(CFLAGS) -o $@_elf
