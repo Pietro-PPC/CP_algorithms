@@ -1,3 +1,5 @@
+/***** START MUF *****/
+
 int _p[], _rank[];
 
 void _make(int a){ _p[a] = a; _rank[a] = 1;}
@@ -14,3 +16,5 @@ void _union(int a, int b){
         _p[a] = b;
     }
 }
+
+/***** END MUF *****/
