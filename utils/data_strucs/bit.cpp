@@ -1,4 +1,4 @@
-/* ***** BEGIN BIT ***** */
+/***** BEGIN BIT *****/
 
 vector<int> bit (N, 0);
 void add(int i, int delta) {
@@ -12,4 +12,4 @@ int get(int i) {
     return ans;
 }
 
-/* ***** END BIT ***** */
+/***** END BIT *****/
