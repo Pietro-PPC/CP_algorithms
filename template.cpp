@@ -5,7 +5,8 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-#define LL_MAX 0x7fffffffffffffff
+#define LL_INF 0x7f7f7f7f7f7f7f7f
+#define INT_INF 0x7f7f7f7f
 #define ende "\n"
 
 #define MP make_pair
