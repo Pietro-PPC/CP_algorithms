@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-/***** START MIN_QUEUE *****/
+/***** BEGIN MIN_QUEUE *****/
 
 deque<int> mq;
 void _remove(int elem){

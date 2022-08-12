@@ -1,4 +1,4 @@
-/***** START MUF *****/
+/***** BEGIN MUF *****/
 
 int _p[], _rank[];
 
